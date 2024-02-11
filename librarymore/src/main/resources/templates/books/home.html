@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+	<title>Book Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Welcome to the Library</h3>
+	<hr>
+    <div class="row d-flex">
+	<div sec:authorize="hasRole('USER')" class="col-md-7">
+
+  <div class="d-flex flex-grow-1 ">
+            <form class="form-inline w-100" action="#" th:action="@{/books/searchBook}"  method="GET">
+                <div class="input-group ">
+                    <input
+                        class="form-control"
+                        type="search"
+                        placeholder="Search for a book?"
+                        name="bookTitle"
+                        
+                    />
+                    <button class="btn btn-outline-success search-btn" type="submit" id="btnSearch" name="btnSearch">
+                        🔍
+                    </button>
+                </div>
+            </form>
+        </div>
+        </div>
+<!--<a th:href="@{/books/searchBook}" class="btn btn-primary btn-sm mb-3">Search books</a>-->
+
+<div sec:authorize="hasRole('ADMIN')" class="col-md-3">
+	<a th:href="@{/books/editBook}" class="btn btn-primary btn-sm mb-3">Admin Dashboard</a>
+</div>
+	<div class="col-md-2">
+	<form action="#" th:action="@{/logout}" method="POST">
+	<input type="submit" value="Logout" class="btn btn-primary">
+	</form>	
+	</div>
+    </div>
+	<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Books
+					<span class="h4">New Items</span>
+				</h1>
+			</div>
+		</div>
+			<div class="row">
+        <div class="col-md-4 portfolio-item">
+          <a href="#">
+            <img
+              class="img-responsive"
+              style="height: 300px; width: 250px"
+             th:src="@{/images/island.jpg}"
+            />
+          </a>
+          <h6>
+            <a href="#">The islands: stories</a
+            >
+          </h6>
+          <p> by <em>Irving, Dionne</em></p>
+          <p>
+            AVAILABLE: 1
+          </p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <a href="#">
+            <img
+              class="img-responsive"
+              style="height: 300px; width: 250px"
+              th:src="@{/images/career.jpg}"
+            />
+          </a>
+          <h6>
+            <a href="#">Your career in animation: how to survive and thrive</a
+            >
+          </h6>
+          <p> by <em>Levy, David B.</em></p>
+          <p>
+           AVAILABLE: 1
+          </p>
+        </div>
+
+        <div class="col-md-4 portfolio-item">
+          <a href="#">
+            <img
+              class="img-responsive"
+              style="height: 300px; width: 250px"
+              th:src="@{/images/life.jpg}"
+            />
+          </a>
+          <h6>
+            <a href="#">The good-enough life</a
+            >
+          </h6>
+          <p> by <em>Alpert, Avram</em></p>
+          <p>
+            AVAILABLE: 1
+          </p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <a href="#">
+            <img
+              class="img-responsive"
+              style="height: 300px; width: 250px"
+              th:src="@{/images/world.jpg}"
+            />
+          </a>
+          <h6>
+            <a href="#">The world: a family history of humanity</a
+            >
+          </h6>
+          <p> by <em>Sebag Montefiore, Simon</em></p>
+          <p>
+            AVAILABLE: 1
+          </p>
+        </div>
+
+        <div class="col-md-4 portfolio-item">
+          <a href="#">
+            <img
+              class="img-responsive"
+              style="height: 300px; width: 250px"
+              th:src="@{/images/environment.jpg}"
+            />
+          </a>
+          <h6>
+            <a href="#">Environmentally sustainable growth: a pragmatic approach</a
+            >
+          </h6>
+          <p> by <em>Cohen, Steven</em></p>
+          <p>
+            AVAILABLE: 1
+          </p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <a href="#">
+            <img
+              class="img-responsive"
+              style="height: 300px; width: 250px"
+              th:src="@{/images/fish.jpg}"
+            />
+          </a>
+          <h6>
+            <a href="#">Why fish don't exist: a story of loss, love, and the hidden order of life</a
+            >
+          </h6>
+          <p > by <em>Miller, Lulu</em></p>
+          <p>
+            AVAILABLE: 1
+          </p>
+        </div>
+      </div>
+</div>
+	
+</body>
+</html>
